@@ -1,4 +1,4 @@
-FROM alpine:3.12.0 as builder
+FROM alpine:3.20 as builder
 
 # Publish the typical syslinux and pxelinux files at tftp root.
 # We only need one subtree of files from syslinux, and
@@ -13,7 +13,7 @@ FROM alpine:3.12.0 as builder
 #       please also update the README.md.
 RUN apk --no-scripts --allow-untrusted --no-cache add --root / --arch x86_64 --virtual sl_plus_deps syslinux
 
-FROM alpine:3.12.0
+FROM alpine:3.20
     
 COPY --from=builder /usr/share/syslinux /tftpboot
 RUN find /tftpboot -type f -exec chmod 0444 {} +
