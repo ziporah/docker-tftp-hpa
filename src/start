@@ -2,6 +2,6 @@
 
 # Make logs meaningful if the container is running with
 # volumes-from https://github.com/jumanjihouse/docker-rsyslog
-ln -sf /var/run/rsyslog/dev/log /dev/log
+ln -sf /var/run/syslog-ng/syslog-ng.sock /dev/log
 
 exec in.tftpd "$@"
